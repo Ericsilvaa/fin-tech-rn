@@ -14,7 +14,7 @@ import {
 } from 'react-native';
 
 const signup = () => {
-  const [countryCode, setCountryCode] = useState('+55');
+  const [countryCode, setCountryCode] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const keyboardVerticalOffset = Platform.OS === 'ios' ? 80 : 0;
   const router = useRouter();
