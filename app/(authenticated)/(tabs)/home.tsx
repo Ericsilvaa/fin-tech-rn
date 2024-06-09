@@ -2,6 +2,8 @@ import Dropdown from '@/components/Dropdown';
 import RoundBtn from '@/components/RoundBtn';
 import Colors from '@/constants/Colors';
 import { defaultStyles } from '@/constants/Styles';
+import { useBalanceStore } from '@/store/balance';
+import { Transaction } from '@/store/balance/types';
 import { Ionicons } from '@expo/vector-icons';
 import { useHeaderHeight } from '@react-navigation/elements';
 import React from 'react';
@@ -16,11 +18,20 @@ import {
 const balance = '1,000.00';
 
 const home = () => {
-  const transactions: any[] = [];
+  const { transactions, clearTransactions, runTransaction, balance } =
+    useBalanceStore();
   const headerHeight = useHeaderHeight();
 
-  const onAddMoney = () => {};
-  const clearTransactions = () => {};
+  const onAddMoney = () => {
+    const transaction: Transaction = {
+      id: Math.random().toString(36).substring(7),
+      title: 'Add money',
+      amount: Math.floor(Math.random() * 1000) * (Math.random() > 0.5 ? 1 : -1),
+      date: new Date(),
+    };
+
+    runTransaction(transaction);
+  };
 
   return (
     <ScrollView
@@ -29,7 +40,7 @@ const home = () => {
     >
       <View style={styles.account}>
         <View style={styles.row}>
-          <Text style={styles.balance}>{balance}</Text>
+          <Text style={styles.balance}>{balance()}</Text>
           <Text style={styles.currency}>€</Text>
         </View>
         <TouchableOpacity
@@ -85,6 +96,7 @@ const home = () => {
           </View>
         ))}
       </View>
+      {/* Widgets */}
     </ScrollView>
   );
 };
