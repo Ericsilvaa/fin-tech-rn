@@ -1,6 +1,6 @@
+import Colors from '@/constants/Colors';
 import { defaultStyles } from '@/constants/Styles';
 import { useAssets } from 'expo-asset';
-import { ResizeMode, Video } from 'expo-av';
 import { Link } from 'expo-router';
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
@@ -10,7 +10,7 @@ const Page = () => {
 
   return (
     <View style={styles.container}>
-      {assets && (
+      {/* {false && (
         <Video
           resizeMode={ResizeMode.COVER}
           isMuted
@@ -19,7 +19,7 @@ const Page = () => {
           source={{ uri: assets[0].uri }}
           style={styles.video}
         />
-      )}
+      )} */}
       <View style={{ marginTop: 80, padding: 80 }}>
         <Text style={styles.header}>Seja Bem vindo ao App</Text>
       </View>
@@ -29,7 +29,7 @@ const Page = () => {
           href={'/login'}
           style={[
             defaultStyles.pillButton,
-            { flex: 1, backgroundColor: '#fff' },
+            { flex: 1, backgroundColor: Colors.dark },
           ]}
           asChild
         >
@@ -63,6 +63,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'black',
   },
   video: {
     width: '100%',
