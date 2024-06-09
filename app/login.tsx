@@ -22,10 +22,8 @@ enum SignInType {
   Apple,
 }
 
-type Props = {};
-
-const LoginPage = (props: Props) => {
-  const [countryCode, setCountryCode] = useState('+49');
+const LoginPage = () => {
+  const [countryCode, setCountryCode] = useState('+55');
   const [phoneNumber, setPhoneNumber] = useState('');
   const keyboardVerticalOffset = Platform.OS === 'ios' ? 80 : 0;
   const router = useRouter();
@@ -82,14 +80,11 @@ const LoginPage = (props: Props) => {
 
         <View style={styles.inputContainer}>
           <TextInput
-            style={{
-              backgroundColor: Colors.lightGray,
-              borderRadius: 16,
-              textAlign: 'center',
-            }}
-            placeholder="Country code"
+            style={styles.input}
+            placeholder={countryCode}
             placeholderTextColor={Colors.gray}
             value={countryCode}
+            onChangeText={setCountryCode}
           />
 
           <TextInput

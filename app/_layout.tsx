@@ -88,11 +88,11 @@ const InitialLayout = () => {
           headerBackTitle: '',
           headerShadowVisible: false,
           headerStyle: { backgroundColor: Colors.background },
-          // headerLeft: () => (
-          //   <TouchableOpacity onPress={router.back}>
-          //     <Ionicons name="arrow-back" size={34} color={Colors.dark} />
-          //   </TouchableOpacity>
-          // ),
+          headerLeft: () => (
+            <TouchableOpacity onPress={router.back}>
+              <Ionicons name="arrow-back" size={34} color={Colors.dark} />
+            </TouchableOpacity>
+          ),
           headerRight: () => (
             <Link href={'/help'} asChild>
               <TouchableOpacity>
@@ -130,6 +130,34 @@ const InitialLayout = () => {
       <Stack.Screen
         name="(authenticated)/(tabs)"
         options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="(authenticated)/crypto/[id]"
+        options={{
+          title: '',
+          headerLeft: () => (
+            <TouchableOpacity onPress={router.back}>
+              <Ionicons name="arrow-back" size={34} color={Colors.dark} />
+            </TouchableOpacity>
+          ),
+          headerLargeTitle: true,
+          headerTransparent: true,
+          headerRight: () => (
+            <View style={{ flexDirection: 'row', gap: 10 }}>
+              <TouchableOpacity>
+                <Ionicons
+                  name="notifications-outline"
+                  color={Colors.dark}
+                  size={30}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Ionicons name="star-outline" color={Colors.dark} size={30} />
+              </TouchableOpacity>
+            </View>
+          ),
+        }}
       />
     </Stack>
   );
